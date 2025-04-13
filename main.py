@@ -1,6 +1,7 @@
 ############################################
-# PHENOMENOLOGIST DEMO (Chat + logprobs)
+# PHENOMENOLOGIST (Chat + logprobs)
 # Using the OpenAI API to analyze text with confidence scores
+# One-shot file: all logic is in main.py
 ############################################
 
 import os
@@ -27,7 +28,7 @@ client = OpenAI(api_key=api_key)
 def get_completion(
     messages,
     model="gpt-4o-mini",
-    max_tokens=200,
+    max_tokens=16000,
     temperature=0.7,
     stop=None,
     seed=123,
@@ -61,6 +62,7 @@ def get_completion(
 ############################################
 # 3) The "AI Phenomenologist" pipeline
 ############################################
+
 def run_phenomenologist(
     text_passage: str,
     model="gpt-4o-mini",
@@ -76,7 +78,7 @@ def run_phenomenologist(
 
     # Step A: Construct the first prompt
     initial_prompt = f"""You are perceiving this text passage for the first time.
-Describe what it's like to read it, focusing on any ambiguities or uncertainties.
+Describe what it's like to read it.
 
 TEXT PASSAGE:
 \"\"\"
@@ -141,7 +143,7 @@ ORIGINAL TEXT PASSAGE:
 
     reflection_text = reflection_resp.choices[0].message.content.strip()
 
-    print("=== Reflective Introspection on Uncertain Tokens ===")
+    print("=== Reflection on Uncertain Tokens ===")
     print(reflection_text)
 
 
