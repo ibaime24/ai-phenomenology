@@ -1,6 +1,8 @@
 # AI Phenomenologist
 
-This project implements an AI Phenomenologist that analyzes text passages and reflects on its own uncertainties during interpretation.
+This project implements takes the philosophical concepts of phenomenology and applies it to transformer models. The base of this project is to use mini CoT prompting combined with pulled logprobs to try and get at the core of why a LLM makes the sorts of decisions it does. Current output is very basic. Enter a prompt, the AI, which in this case is 4o-mini, will give you what it "understands" in the prompt, the program pulls the logprobs from all outputted tokens, and then the program reprompts GBT along with the logprobs to group and try and explain the phenomena. 
+
+I am currently exploring if any meaning can be gained from this experiment and what the final outputs can tell us. My primary observation as of now is that the model very often reports lower logprobs on tokens that relate to human emotion than other kinds of information. Difficulties with confidence in emotional tokens is a reocurring phenomena. If you use this, please message me on linkedin or at `ibaime24@cmc.edu` and tell me what you find. 
 
 ## Setup
 
